@@ -3,32 +3,38 @@ package com.ll.exam;
 import netscape.javascript.JSObject;
 import org.json.simple.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 
 public class App {
-    public void run() {
+    public void run() throws IOException {
         int id = 0;
         HashMap<Integer, WiseSaying> wordList = new HashMap<>();
         System.out.println("== 명언 SSG ==");
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        br.readLine();
+//        Scanner sc = new Scanner(System.in);
 
 
         outer:while(true) {
             System.out.print("명령) ");
             //입력받음+공백제거
-            String cmd = sc.nextLine().trim();
+            String cmd = br.readLine().trim();
             if(cmd.contains("종료")) {
                 break outer;
             } else if(cmd.contains("등록")) {
                 System.out.print("작가: ");
-                String author = sc.nextLine().trim();
+                String author = br.readLine().trim();
                 System.out.print("명언: ");
-                String word = sc.nextLine().trim();
+                String word = br.readLine().trim();
                 WiseSaying w = new WiseSaying(id, author, word);
-                wordList.put(id++, w);
+                wordList.put(id, w);
                 System.out.println((id)+"번 명언이 등록되었습니다.");
+                id++;
 
             } else if(cmd.contains("목록")) {
                 System.out.println("번호 / 작가 / 명언\n" + "--------------------------");
@@ -42,14 +48,12 @@ public class App {
             } else if(cmd.contains("수정")) {
                 int idx = Integer.parseInt(cmd.split("\\?id=")[1]);
                 System.out.print("수정할 내용 입력: ");
-                String word = sc.nextLine();
+                String word = br.readLine();
                 WiseSaying w = wordList.get(idx);
                 w.word = word;
                 wordList.put(idx, w);
                 System.out.println(w);
             }
         }
-        sc.close();
-
     }
 }
