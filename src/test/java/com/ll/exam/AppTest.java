@@ -54,4 +54,15 @@ public class AppTest {
 
         assertEquals("안녕", rs);
     }
+
+    @Test
+    public void getIntParam2() {
+        Request rq = new Request("검색?id=10&no=1");
+
+        int id = rq.getIntParam("id", 0);
+        int no = rq.getIntParam("no", 0);
+
+        assertEquals(10, id);
+        assertEquals(1, no);
+    }
 }
