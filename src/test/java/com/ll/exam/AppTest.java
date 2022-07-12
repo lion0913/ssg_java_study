@@ -20,7 +20,7 @@ public class AppTest {
 
 
     @Test
-    public void scTest() {
+    public void scannerTest() {
         String input = """
                 등록
                 명언1

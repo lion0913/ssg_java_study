@@ -1,24 +1,22 @@
 package com.ll.exam;
 
 public class WiseSaying {
-    String author;
-    String word;
     int id;
+    String content;
+    String author;
 
-    public WiseSaying(int id, String author, String word) {
-        this.author = author;
-        this.word = word;
+    public WiseSaying(int id, String content, String author) {
         this.id = id;
-        System.out.println("명언: " + word);
-        System.out.println("작가: " + author);
+        this.content = content;
+        this.author = author;
     }
 
     @Override
     public String toString() {
         return "WiseSaying{" +
-                "author='" + author + '\'' +
-                ", word='" + word + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
                 '}';
     }
 }
