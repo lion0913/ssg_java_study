@@ -65,12 +65,23 @@ public class AppTest {
         assertEquals(10, id);
         assertEquals(1, no);
     }
-    @Test
-    public void makeFileTest() {
-        Util.file.mkdir("test_data");
-        Util.file.saveToFile("test_data/1.txt", "안녕");
-        String body = Util.file.readFromFile("test_data/1.txt");
+//    @Test
+//    public void makeFileTest() {
+//        Util.file.mkdir("test_data");
+//        Util.file.saveToFile("test_data/1.txt", "안녕");
+//        String body = Util.file.readFromFile("test_data/1.txt");
+//
+//        assertEquals("안녕", body);
+//    }
 
-        assertEquals("안녕", body);
+    @Test
+    void saveJsonFileTest() {
+        Util.mkdir("test_data");
+        WiseSaying wiseSaying = new WiseSaying(1, "내 사전에 불가능은 없다.", "나폴레옹");
+        Util.saveToFile("test_data/1.json", wiseSaying.toJSON());
+
+        String rs = Util.readFromFile("test_data/1.json");
+
+        assertEquals(wiseSaying.toJSON(), rs);
     }
 }

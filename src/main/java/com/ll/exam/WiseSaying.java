@@ -19,4 +19,15 @@ public class WiseSaying {
                 ", author='" + author + '\'' +
                 '}';
     }
+
+    public String toJSON() {
+        return """
+                {
+                    "id": %d,
+                    "content" : %s,
+                    "author" : %s
+                }
+                """.stripIndent().formatted(id, content, author).trim();
+        //stripIndent : 불필요하게 들어간 탭을 없앤다.
+    }
 }
