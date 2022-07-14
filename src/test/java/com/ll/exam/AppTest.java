@@ -65,4 +65,12 @@ public class AppTest {
         assertEquals(10, id);
         assertEquals(1, no);
     }
+    @Test
+    public void makeFileTest() {
+        Util.file.mkdir("test_data");
+        Util.file.saveToFile("test_data/1.txt", "안녕");
+        String body = Util.file.readFromFile("test_data/1.txt");
+
+        assertEquals("안녕", body);
+    }
 }

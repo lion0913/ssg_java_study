@@ -25,8 +25,6 @@ public class WiseSayingRepository {
 
     public List<WiseSaying> findAll() {
         return wiseSayings;
-
-        // 다 찾기
     }
 
     public WiseSaying write(String content, String author) {
@@ -42,7 +40,6 @@ public class WiseSayingRepository {
     public void remove(int paramId) {
         WiseSaying foundWiseSaying = findById(paramId);
         wiseSayings.remove(foundWiseSaying);
-
         // 파일 삭제
     }
 
